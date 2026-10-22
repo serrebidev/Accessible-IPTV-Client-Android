@@ -108,3 +108,17 @@ Stalker VOD, playlist scope filter (owner skipped it, 2026-10-13).
 key, changed placeholder, missing plural form or help section, so a new English string needs all 13 in the same commit.
 Hungarian uses the desktop translator's terms (műsorújság, rögzítés, importálás). Apostrophes: typographic ’, never raw '.
 Format-only strings are `translatable="false"`. `generateLocaleConfig` feeds Android 13+'s per-app language picker.
+
+## Agent skills
+
+### Issue tracker
+
+Issues are tracked in this repo's GitHub Issues, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: one `GLOSSARY.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
