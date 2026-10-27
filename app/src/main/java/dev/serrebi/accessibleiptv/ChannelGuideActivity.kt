@@ -48,7 +48,7 @@ class ChannelGuideActivity : ListScreen() {
 
 	override fun onResume() {
 		super.onResume()
-		if (this::all.isInitialized) Net.warmUp(all.map { it.url })
+		Net.warmUp(all.map { it.url })
 		// "On now, until when" lines go stale while the screen is away.
 		if (this::adapter.isInitialized) adapter.notifyDataSetChanged()
 	}
