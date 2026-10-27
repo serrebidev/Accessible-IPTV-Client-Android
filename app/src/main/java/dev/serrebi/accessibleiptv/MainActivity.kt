@@ -116,6 +116,8 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onResume() {
 		super.onResume()
+		// The connection warmed earlier was spent by the last channel watched.
+		Net.warmUp(app.channels.map { it.url })
 		if (SourcesActivity.changed) {
 			SourcesActivity.changed = false
 			load(force = false, all = true)
@@ -218,6 +220,9 @@ class MainActivity : AppCompatActivity() {
 			val errors = sections.flatMap { app.load(it, force) }
 			refreshGroupCounts()
 			showChannels()
+			// Warm the stream hosts' connections while the user browses: picking a
+			// channel then starts at the first byte, not at a TLS handshake.
+			Net.warmUp(app.channels.map { it.url })
 			status.status(
 				if (errors.isEmpty()) countText(app.list(section).size)
 				else getString(R.string.load_errors, errors.joinToString("; ")),

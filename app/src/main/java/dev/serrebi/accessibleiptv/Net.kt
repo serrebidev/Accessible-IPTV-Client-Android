@@ -3,6 +3,7 @@ package dev.serrebi.accessibleiptv
 import java.io.BufferedInputStream
 import java.io.IOException
 import java.io.InputStream
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.zip.GZIPInputStream
@@ -15,6 +16,34 @@ object Net {
 		.readTimeout(60, java.util.concurrent.TimeUnit.SECONDS)
 		// The shared channel owns retries, and the provider permits only one connection.
 		.retryOnConnectionFailure(false).fastFallback(false).build()
+
+	/** Stream hosts worth a warm connection, capped: the first ones seen win. */
+	fun warmHosts(urls: List<String>, max: Int = 2): List<okhttp3.HttpUrl> {
+		val hosts = LinkedHashMap<String, okhttp3.HttpUrl>()
+		for (raw in urls) {
+			val u = raw.toHttpUrlOrNull() ?: continue
+			val key = "${u.scheme}://${u.host}:${u.port}"
+			if (key !in hosts) hosts[key] = okhttp3.HttpUrl.Builder().scheme(u.scheme).host(u.host).port(u.port).build()
+			if (hosts.size >= max) break
+		}
+		return hosts.values.toList()
+	}
+
+	/**
+	 * Warms one idle connection per stream host on the live client, so picking a channel
+	 * does not pay DNS + TCP + TLS before the first byte: a live socket is cancelled when
+	 * its channel closes, so the pool is always cold at pick time. The request goes to the
+	 * host's root — it opens no channel and no provider stream — and its answer is dropped.
+	 */
+	fun warmUp(urls: List<String>) {
+		for (root in warmHosts(urls)) {
+			liveClient.newCall(okhttp3.Request.Builder().url(root).header("User-Agent", USER_AGENT).build())
+				.enqueue(object : okhttp3.Callback {
+					override fun onFailure(call: okhttp3.Call, e: IOException) = Unit
+					override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) = response.close()
+				})
+		}
+	}
 
 	/** A live request whose cancellation also prevents a not-yet-executed call. */
 	class Call(private val url: String, private val headers: Map<String, String>) : AutoCloseable {

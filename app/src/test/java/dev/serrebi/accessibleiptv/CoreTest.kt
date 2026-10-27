@@ -165,4 +165,17 @@ class CoreTest {
 	@Test fun nameKeyIgnoresPrefixAndQuality() {
 		assertEquals(Xmltv.nameKey("BBC One"), Xmltv.nameKey("UK: BBC One HD"))
 	}
+
+	@Test fun warmHostsDedupesCapsAndSkipsBadUrls() {
+		val hosts = Net.warmHosts(listOf(
+			"https://tv.example.com/proxy/ts/stream/aaa",
+			"https://tv.example.com/proxy/ts/stream/bbb",
+			"http://other.example.net:8080/live/1.ts",
+			"not a url",
+			"https://third.example.org/x",
+		)).map { it.toString() }
+		// Distinct scheme/host/port roots, first seen first, capped at two.
+		assertEquals(listOf("https://tv.example.com/", "http://other.example.net:8080/"), hosts)
+		assertTrue(Net.warmHosts(emptyList()).isEmpty())
+	}
 }
