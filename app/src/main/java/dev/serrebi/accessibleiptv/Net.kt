@@ -21,7 +21,8 @@ object Net {
 	fun warmHosts(urls: List<String>, max: Int = 2): List<okhttp3.HttpUrl> {
 		val hosts = LinkedHashMap<String, okhttp3.HttpUrl>()
 		for (raw in urls) {
-			val u = raw.toHttpUrlOrNull() ?: continue
+			// A playlist entry can carry its headers behind a pipe; they are not part of the address.
+			val u = M3uParser.splitHeaders(raw).first.toHttpUrlOrNull() ?: continue
 			val key = "${u.scheme}://${u.host}:${u.port}"
 			if (key !in hosts) hosts[key] = okhttp3.HttpUrl.Builder().scheme(u.scheme).host(u.host).port(u.port).build()
 			if (hosts.size >= max) break

@@ -170,7 +170,7 @@ class CoreTest {
 		val hosts = Net.warmHosts(listOf(
 			"https://tv.example.com/proxy/ts/stream/aaa",
 			"https://tv.example.com/proxy/ts/stream/bbb",
-			"http://other.example.net:8080/live/1.ts",
+			"http://other.example.net:8080/live/1.ts|UA=VLC",
 			"not a url",
 			"https://third.example.org/x",
 		)).map { it.toString() }
