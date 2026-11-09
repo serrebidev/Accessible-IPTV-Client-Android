@@ -27,7 +27,7 @@ This is the Android companion to [Accessible IPTV Client](https://github.com/ser
 - Export and import every setting, playlist, and favourite as one file.
 - 14 languages: English, Spanish, Arabic, Portuguese (Brazilian), French, German, Russian, Turkish, Italian, Polish, Hindi, Chinese (Simplified), Japanese, and Hungarian. On Android 13 and later, **Settings > Language** picks one for this app only.
 - Account info for Xtream and Stalker: expiry, trial, and connections.
-- Built-in updater that pulls new versions from GitHub Releases and verifies the SHA-256 before installing.
+- Built-in updater that pulls new versions from Forgejo Releases and verifies the SHA-256 sidecar before installing.
 - An offline Help screen, with headings for quick navigation.
 
 ## Accessibility
@@ -42,7 +42,7 @@ Built from the start for TalkBack and other Android screen readers, following th
 
 ## Download and install
 
-Grab the latest `AccessibleIPTV-vX.Y.Z.apk` from the [Releases page](https://github.com/serrebidev/Accessible-IPTV-Client-Android/releases).
+Grab the latest `AccessibleIPTV-vX.Y.Z.apk` from the [Releases page](https://git.serrebiradio.com/serrebi/Accessible-IPTV-Client-Android/releases).
 
 **Phones and tablets**
 

@@ -18,7 +18,7 @@ One APK for phones, tablets and Android TV, Android 10 (API 29) and up.
 - `local.properties` needs `sdk.dir` with forward slashes (`C\:/...`); backslashes break Gradle with
   "filename, directory name, or volume label syntax is incorrect".
 - Release is signed with the owner's debug keystore (same key as Beluga, cert SHA-256 e686d194...10ca) so in-app updates install over each other. A build machine without that key makes APKs that cannot update installed copies.
-- Updates: `Updater.kt` reads GitHub Releases of serrebidev/Accessible-IPTV-Client-Android, takes the .apk asset, requires the published sha256 digest (a release without one is refused), installs via PackageInstaller. Tag = `v` + versionName.
+- Updates: `Updater.kt` reads Forgejo Releases of serrebi/Accessible-IPTV-Client-Android on git.serrebiradio.com, takes the .apk asset, requires the `<apk>.sha256` sidecar asset (a release without a valid one is refused), installs via PackageInstaller. Tag = `v` + versionName.
 
 ## Accessibility rules (non-negotiable)
 

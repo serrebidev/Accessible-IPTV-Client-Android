@@ -7,6 +7,7 @@ import dev.serrebi.accessibleiptv.FakeServer.Companion.reply
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
@@ -261,6 +262,28 @@ class ProviderTest {
 		} catch (e: IOException) {
 			assertEquals("a release without a digest is never installed blind", "The release has no checksum", e.message)
 		}
+	}
+
+	@Test fun updateCheckReadsForgejoRelease() {
+		val digest = sha(apk)
+		server.text("/releases/latest", """{"tag_name":"v9.9.9","body":"notes here","assets":[
+			{"name":"app.apk","browser_download_url":"${server.url}/app.apk"},
+			{"name":"app.apk.sha256","browser_download_url":"${server.url}/app.apk.sha256"}]}""")
+		server.bytes("/app.apk", apk)
+		server.text("/app.apk.sha256", "$digest  app.apk\n")
+		val r = Updater.check("9.9.8", server.url)
+		assertEquals("9.9.9", r!!.version)
+		assertEquals("${server.url}/app.apk", r.apkUrl)
+		assertEquals(digest, r.sha256)
+		assertEquals("notes here", r.notes)
+		assertNull("current builds are not offered their own release", Updater.check("9.9.9", server.url))
+	}
+
+	@Test fun updateCheckWithoutSidecarLeavesNothingToVerify() {
+		server.text("/releases/latest", """{"tag_name":"v9.9.9","body":"","assets":[
+			{"name":"app.apk","browser_download_url":"${server.url}/app.apk"}]}""")
+		val r = Updater.check("9.9.8", server.url)
+		assertNull("a release without a checksum is refused, not installed blind", r!!.sha256)
 	}
 
 	@Test fun stalkerChannelOfflineLinkIsAnError() {

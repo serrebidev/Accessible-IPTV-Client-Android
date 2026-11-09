@@ -14,29 +14,45 @@ import java.io.IOException
 import java.security.MessageDigest
 
 /**
- * Self-update from GitHub Releases: newest release with an .apk asset, SHA-256 checked
- * against the digest GitHub publishes, installed through PackageInstaller (Android always
- * asks the user to confirm). Updates must be signed with the same key as the installed app.
+ * Self-update from Forgejo Releases: newest release with an .apk asset, SHA-256 checked
+ * against the "<apk name>.sha256" sidecar asset (Forgejo publishes no per-asset digest),
+ * installed through PackageInstaller (Android always asks the user to confirm). Updates
+ * must be signed with the same key as the installed app.
  */
 object Updater {
-	const val REPO = "serrebidev/Accessible-IPTV-Client-Android"
+	const val REPO = "serrebi/Accessible-IPTV-Client-Android"
+	const val API = "https://git.serrebiradio.com/api/v1/repos/$REPO"
 
 	data class Release(val version: String, val apkUrl: String, val sha256: String?, val notes: String)
 
 	/** The newer release, or null when this build is current. Blocking. */
-	fun check(currentVersion: String): Release? {
-		val o = JSONObject(Net.text("https://api.github.com/repos/$REPO/releases/latest"))
+	fun check(currentVersion: String, api: String = API): Release? {
+		val o = JSONObject(Net.text("$api/releases/latest"))
 		val version = o.optString("tag_name").removePrefix("v")
 		if (!isNewer(version, currentVersion)) return null
 		val assets = o.optJSONArray("assets") ?: return null
+		var apkUrl: String? = null
+		var apkName = ""
+		val sidecars = HashMap<String, String>()
 		for (i in 0 until assets.length()) {
 			val a = assets.getJSONObject(i)
-			if (a.optString("name").endsWith(".apk", true)) {
-				val digest = a.optString("digest").takeIf { it.startsWith("sha256:") }?.removePrefix("sha256:")
-				return Release(version, a.getString("browser_download_url"), digest, o.optString("body").trim())
+			val name = a.optString("name")
+			val url = a.optString("browser_download_url")
+			if (url.isEmpty()) continue
+			if (name.endsWith(".apk", true) && apkUrl == null) {
+				apkName = name
+				apkUrl = url
+			} else {
+				sidecars[name.lowercase()] = url
 			}
 		}
-		return null
+		val url = apkUrl ?: return null
+		// The checksum rides in a sidecar asset next to the APK; a release without a
+		// valid one is refused by download() rather than installed blind.
+		val sha = sidecars["$apkName.sha256".lowercase()]?.let { u ->
+			runCatching { Net.text(u).trim().split(Regex("\\s+")).first() }.getOrNull()
+		}?.lowercase()?.takeIf { it.matches(Regex("[0-9a-f]{64}")) }
+		return Release(version, url, sha, o.optString("body").trim())
 	}
 
 	/** Numeric compare of dotted versions: "0.10.0" is newer than "0.9.3". */
