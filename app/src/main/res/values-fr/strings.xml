@@ -216,4 +216,8 @@
 	<string name="settings_failed">Échec : %1$s</string>
 	<string name="language">Langue</string>
 	<string name="stream_lost">Flux perdu</string>
+
+	<string name="continue_watching">Continuer à regarder</string>
+	<string name="field_backup_servers">Serveurs de secours, un par ligne</string>
+	<string name="nothing_to_continue">Rien à continuer</string>
 </resources>

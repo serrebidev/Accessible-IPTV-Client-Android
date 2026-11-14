@@ -209,4 +209,8 @@
 	<string name="settings_failed">Fehler: %1$s</string>
 	<string name="language">Sprache</string>
 	<string name="stream_lost">Stream verloren</string>
+
+	<string name="continue_watching">Weiter schauen</string>
+	<string name="field_backup_servers">Backup-Server, einer pro Zeile</string>
+	<string name="nothing_to_continue">Nichts fortzusetzen</string>
 </resources>

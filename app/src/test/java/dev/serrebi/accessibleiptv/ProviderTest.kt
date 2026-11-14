@@ -24,6 +24,21 @@ class ProviderTest {
 
 	@After fun stop() = server.close()
 
+	@Test fun backupServersAreTriedWhenThePrimaryIsDown() {
+		server.text("/player_api.php", """[{"stream_id":9,"num":7,"name":"Ch9","category_id":"1"}]""")
+		// Primary is dead (port 1), backup answers: the channel must load from the backup.
+		val src = Source("x", Source.TYPE_XTREAM, "X", "http://127.0.0.1:1", "u", "p", backupServers = server.url)
+		assertEquals(listOf("http://127.0.0.1:1", server.url), Xtream.servers(src))
+		val ch = Xtream.liveChannels(src).single()
+		assertEquals("Ch9", ch.name)
+		assertEquals("${server.url}/live/u/p/9.ts", ch.url)
+	}
+
+	@Test fun backupServerListDeduplicatesAndNormalises() {
+		val src = Source("x", Source.TYPE_XTREAM, "X", "example.com:8080/", "u", "p", backupServers = "example.com:8080\nhttp://example.com:8080/player_api.php?x=1\n\n backup.example.com ")
+		assertEquals(listOf("http://example.com:8080", "http://backup.example.com"), Xtream.servers(src))
+	}
+
 	// ---- Net ----
 
 	@Test fun redirectsAreFollowedIncludingRelativeOnes() {

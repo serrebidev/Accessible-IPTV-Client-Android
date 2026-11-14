@@ -59,3 +59,5 @@ A Beállítások exportálása fájlba menti a listákat, fiókokat, kedvenceket
 # Frissítések
 
 Az alkalmazás naponta egyszer keres új verziót. A Továbbiak, Frissítések keresése azonnal ellenőriz. Az Android minden telepítést megerősíttet.
+
+Xtream backup servers, one per line.

@@ -2,6 +2,8 @@
 
 Open Playlists. Add an Xtream login, an M3U URL, an M3U file, or a Stalker portal (address and MAC). Xtream and Stalker bring their own guide. An M3U that names its guide brings it too; otherwise add its guide URL. A whole Xtream panel link pasted as the server fills in the login.
 
+Xtream logins can list backup servers, one per line; the app tries each until one answers. Films and episodes left half watched appear under More, Continue watching, and resume where they were left.
+
 # Main screen
 
 Search is at the top. It searches every group in the section; exact names come first. Voice, next to it, fills it by speech. Back clears it.
@@ -14,7 +16,7 @@ Number keys on a remote or keyboard jump to that channel number.
 
 # More
 
-Previous channel, Recently watched, Go to channel number, Refresh playlists, Refresh guide, Account, Settings, Check for updates, Help.
+Previous channel, Continue watching, Recently watched, Go to channel number, Refresh playlists, Refresh guide, Account, Settings, Check for updates, Help.
 
 # Items
 

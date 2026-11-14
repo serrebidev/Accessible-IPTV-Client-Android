@@ -223,4 +223,8 @@
 	<string name="settings_failed">Błąd: %1$s</string>
 	<string name="language">Język</string>
 	<string name="stream_lost">Utracono strumień</string>
+
+	<string name="continue_watching">Kontynuuj oglądanie</string>
+	<string name="field_backup_servers">Serwery zapasowe, jeden na linię</string>
+	<string name="nothing_to_continue">Brak do kontynuowania</string>
 </resources>

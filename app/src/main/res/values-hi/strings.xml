@@ -209,4 +209,8 @@
 	<string name="settings_failed">विफल: %1$s</string>
 	<string name="language">भाषा</string>
 	<string name="stream_lost">स्ट्रीम खो गई</string>
+
+	<string name="continue_watching">देखना जारी रखें</string>
+	<string name="field_backup_servers">बैकअप सर्वर, प्रत्येक पंक्ति में एक</string>
+	<string name="nothing_to_continue">जारी रखने को कुछ नहीं</string>
 </resources>

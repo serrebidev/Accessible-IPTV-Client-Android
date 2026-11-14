@@ -216,4 +216,8 @@
 	<string name="settings_failed">Error: %1$s</string>
 	<string name="language">Idioma</string>
 	<string name="stream_lost">Transmisión perdida</string>
+
+	<string name="continue_watching">Seguir viendo</string>
+	<string name="field_backup_servers">Servidores de respaldo, uno por línea</string>
+	<string name="nothing_to_continue">Nada que continuar</string>
 </resources>

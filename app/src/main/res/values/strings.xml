@@ -234,4 +234,8 @@
 
 	<string name="language">Language</string>
 	<string name="stream_lost">Stream lost</string>
+
+	<string name="continue_watching">Continue watching</string>
+	<string name="field_backup_servers">Backup servers, one per line</string>
+	<string name="nothing_to_continue">Nothing to continue</string>
 </resources>

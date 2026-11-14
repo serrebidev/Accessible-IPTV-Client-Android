@@ -299,6 +299,7 @@ class MainActivity : AppCompatActivity() {
 		val items = listOf(
 			getString(R.string.previous_channel) to { playPrevious() },
 			getString(R.string.recently_watched) to { showRecent() },
+			getString(R.string.continue_watching) to { showContinue() },
 			getString(R.string.go_to_number) to { askNumber() },
 			getString(R.string.refresh_playlists) to { load(force = true, all = true) },
 			getString(R.string.import_guide) to { importGuide(manual = true) },
@@ -332,6 +333,15 @@ class MainActivity : AppCompatActivity() {
 		if (recent.isEmpty()) return status.status(getString(R.string.no_recent))
 		AlertDialog.Builder(this).setTitle(R.string.recently_watched)
 			.setItems(recent.map { it.name }.toTypedArray()) { _, i -> Player.open(this, recent[i], status) }
+			.setNegativeButton(android.R.string.cancel, null).show()
+	}
+
+	/** Films, episodes and catch-up left half watched, newest first. */
+	private fun showContinue() {
+		val items = app.prefs.resume.mapNotNull { (key, _) -> app.channel(key)?.takeIf { !it.isLive } }
+		if (items.isEmpty()) return status.status(getString(R.string.nothing_to_continue))
+		AlertDialog.Builder(this).setTitle(R.string.continue_watching)
+			.setItems(items.map { it.name }.toTypedArray()) { _, i -> Player.open(this, items[i], status) }
 			.setNegativeButton(android.R.string.cancel, null).show()
 	}
 

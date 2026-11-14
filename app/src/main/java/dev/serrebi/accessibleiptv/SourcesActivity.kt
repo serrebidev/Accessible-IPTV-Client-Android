@@ -80,6 +80,7 @@ class SourcesActivity : ListScreen() {
 		val user = v.findViewById<EditText>(R.id.user)
 		val pass = v.findViewById<EditText>(R.id.pass)
 		val epg = v.findViewById<EditText>(R.id.epg)
+		val backups = v.findViewById<EditText>(R.id.backups)
 		fun hide(vararg ids: Int) = ids.forEach { v.findViewById<View>(it).visibility = View.GONE }
 		when {
 			xtream -> { v.findViewById<TextView>(R.id.urlLabel).setText(R.string.field_server); hide(R.id.macLabel, R.id.mac) }
@@ -87,7 +88,8 @@ class SourcesActivity : ListScreen() {
 			file -> hide(R.id.urlLabel, R.id.url, R.id.macLabel, R.id.mac, R.id.userLabel, R.id.user, R.id.passLabel, R.id.pass)
 			else -> hide(R.id.macLabel, R.id.mac, R.id.userLabel, R.id.user, R.id.passLabel, R.id.pass)
 		}
-		existing?.let { name.setText(it.name); url.setText(it.url); mac.setText(it.mac); user.setText(it.username); pass.setText(it.password); epg.setText(it.epgUrl) }
+		if (!xtream) hide(R.id.backupLabel, R.id.backups)
+		existing?.let { name.setText(it.name); url.setText(it.url); mac.setText(it.mac); user.setText(it.username); pass.setText(it.password); epg.setText(it.epgUrl); backups.setText(it.backupServers) }
 
 		val dialog = AlertDialog.Builder(this)
 			.setTitle(when { existing != null -> R.string.edit_source; xtream -> R.string.add_xtream; stalker -> R.string.add_stalker; else -> R.string.add_m3u })
@@ -132,6 +134,7 @@ class SourcesActivity : ListScreen() {
 					password = pass.text.toString(),
 					epgUrl = epg.text.toString().trim(),
 					mac = mac.text.toString().trim().uppercase(),
+					backupServers = if (xtream) backups.text.toString().trim() else "",
 				))
 				dialog.dismiss()
 			}

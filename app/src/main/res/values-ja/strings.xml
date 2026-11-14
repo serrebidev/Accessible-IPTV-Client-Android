@@ -202,4 +202,8 @@
 	<string name="settings_failed">失敗: %1$s</string>
 	<string name="language">言語</string>
 	<string name="stream_lost">ストリームが失われました</string>
+
+	<string name="continue_watching">続きを見る</string>
+	<string name="field_backup_servers">バックアップサーバー、1行に1つ</string>
+	<string name="nothing_to_continue">続きはありません</string>
 </resources>

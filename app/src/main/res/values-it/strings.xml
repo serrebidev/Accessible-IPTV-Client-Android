@@ -216,4 +216,8 @@
 	<string name="settings_failed">Errore: %1$s</string>
 	<string name="language">Lingua</string>
 	<string name="stream_lost">Flusso perso</string>
+
+	<string name="continue_watching">Continua a guardare</string>
+	<string name="field_backup_servers">Server di backup, uno per riga</string>
+	<string name="nothing_to_continue">Niente da continuare</string>
 </resources>

@@ -59,3 +59,5 @@ Ayarları dışa aktar listeleri, girişleri, favorileri ve seçenekleri bir dos
 # Güncellemeler
 
 Uygulama günde bir kez yeni sürüm arar. Diğer, Güncellemeleri denetle hemen denetler. Android her yüklemede onay ister.
+
+Xtream backup servers, one per line.

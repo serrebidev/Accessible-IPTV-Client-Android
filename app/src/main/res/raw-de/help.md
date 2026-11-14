@@ -59,3 +59,5 @@ Einstellungen exportieren speichert Listen, Zugänge, Favoriten und Optionen in 
 # Updates
 
 Die App sucht einmal am Tag nach einer neuen Version. Mehr, Nach Updates suchen prüft sofort. Android fragt bei jeder Installation nach.
+
+Xtream backup servers, one per line.

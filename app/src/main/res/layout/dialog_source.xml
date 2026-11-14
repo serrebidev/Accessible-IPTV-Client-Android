@@ -24,6 +24,9 @@
 		<TextView android:id="@+id/passLabel" style="@style/FieldLabel" android:labelFor="@+id/pass" android:text="@string/field_password" />
 		<EditText android:id="@+id/pass" style="@style/Field" android:inputType="textPassword" />
 
+		<TextView android:id="@+id/backupLabel" style="@style/FieldLabel" android:labelFor="@+id/backups" android:text="@string/field_backup_servers" />
+		<EditText android:id="@+id/backups" style="@style/Field" android:inputType="textUri|textMultiLine" android:minLines="2" />
+
 		<TextView style="@style/FieldLabel" android:labelFor="@+id/epg" android:text="@string/field_epg" />
 		<EditText android:id="@+id/epg" style="@style/Field" android:inputType="textUri" />
 	</LinearLayout>

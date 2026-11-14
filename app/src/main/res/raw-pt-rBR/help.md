@@ -59,3 +59,5 @@ Exportar configurações salva listas, acessos, favoritos e opções em um arqui
 # Atualizações
 
 O app procura uma nova versão uma vez por dia. Mais, Procurar atualizações verifica agora. O Android pede para confirmar cada instalação.
+
+Xtream backup servers, one per line.

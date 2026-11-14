@@ -56,11 +56,26 @@ object Xtream {
 		return null
 	}
 
+	/** Every server to try, primary first. Backup lines are one server per line. */
+	fun servers(src: Source): List<String> = (listOf(src.url) + src.backupServers.lines().map { it.trim() }.filter { it.isNotEmpty() })
+		.map { normalizeServer(it) }.distinct()
+
+	/** Runs [block] against each server until one answers; the last error is thrown. */
+	fun <T> withFailover(src: Source, block: (Source) -> T): T {
+		var last: Exception? = null
+		for (s in servers(src)) {
+			try { return block(src.copy(url = s)) } catch (e: Exception) { last = e }
+		}
+		throw last ?: java.io.IOException("No server address")
+	}
+
 	private fun api(src: Source, action: String = "") =
 		"${src.url}/player_api.php?username=${Source.enc(src.username)}&password=${Source.enc(src.password)}" +
 			if (action.isEmpty()) "" else "&action=$action"
 
-	fun liveChannels(src: Source): List<Channel> {
+	fun liveChannels(src: Source): List<Channel> = withFailover(src) { liveChannelsOn(it) }
+
+	fun liveChannelsOn(src: Source): List<Channel> {
 		val cats = categories(src, "get_live_categories")
 		val user = Source.enc(src.username)
 		val pass = Source.enc(src.password)
@@ -92,7 +107,9 @@ object Xtream {
 		return out
 	}
 
-	fun movies(src: Source): List<Channel> {
+	fun movies(src: Source): List<Channel> = withFailover(src) { moviesOn(it) }
+
+	fun moviesOn(src: Source): List<Channel> {
 		val cats = categories(src, "get_vod_categories")
 		val user = Source.enc(src.username)
 		val pass = Source.enc(src.password)
@@ -106,7 +123,9 @@ object Xtream {
 		return out
 	}
 
-	fun series(src: Source): List<Channel> {
+	fun series(src: Source): List<Channel> = withFailover(src) { seriesOn(it) }
+
+	fun seriesOn(src: Source): List<Channel> {
 		val cats = categories(src, "get_series_categories")
 		val out = ArrayList<Channel>()
 		Net.forEachObject(api(src, "get_series")) { o ->
@@ -135,8 +154,7 @@ object Xtream {
 	}
 
 	/** Episodes of a show, in season order, named "Season 1, Episode 2: Title". */
-	fun episodes(src: Source, show: Channel): List<Channel> =
-		parseEpisodes(src, show, Net.text(api(src, "get_series_info") + "&series_id=${show.url}"))
+	fun episodes(src: Source, show: Channel): List<Channel> = withFailover(src) { parseEpisodes(it, show, Net.text(api(it, "get_series_info") + "&series_id=${show.url}")) }
 
 	/** get_series_info body -> episodes. "episodes" is keyed by season, or (some panels) a list of seasons. */
 	fun parseEpisodes(src: Source, show: Channel, body: String): List<Channel> {
@@ -165,7 +183,7 @@ object Xtream {
 	}
 
 	/** user_info from the server, as label/value lines ready to read out. */
-	fun accountInfo(src: Source): List<Pair<String, String>> = parseAccount(Net.text(api(src)))
+	fun accountInfo(src: Source): List<Pair<String, String>> = withFailover(src) { parseAccount(Net.text(api(it))) }
 
 	fun parseAccount(body: String): List<Pair<String, String>> {
 		val u = JSONObject(body).optJSONObject("user_info") ?: return emptyList()

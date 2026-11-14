@@ -162,7 +162,7 @@ class Prefs(context: Context) {
 		for (k in all.keys()) {
 			val v = all.getJSONObject(k)
 			val type = when (k) {
-				"sources", "recent", "channelTracks", "audioKeywords", "lastGroup" -> "s"
+				"sources", "recent", "channelTracks", "audioKeywords", "lastGroup", "resumePositions" -> "s"
 				"preferAd", "externalPlayer", "showStreamUrl", "speakSubtitles" -> "b"
 				"bufferSeconds", "maxBufferSeconds" -> "f"
 				"epgDaysAhead", "guideFingerprint", "prePad", "postPad", "announceLevel" -> "i"
@@ -196,6 +196,31 @@ class Prefs(context: Context) {
 			}
 		}
 	}
+
+	/** Where a film, episode or catch-up was left; newest first, capped at 50. */
+	var resume: List<Pair<String, Long>>
+		get() {
+			val o = JSONObject(sp.getString("resumePositions", "{}")!!)
+			return o.keys().asSequence().mapNotNull { k ->
+				val e = o.optJSONObject(k) ?: return@mapNotNull null
+				val p = e.optLong("p"); val t = e.optLong("t")
+				if (p > 0) k to p else null
+			}.sortedByDescending { o.optJSONObject(it.first)?.optLong("t") ?: 0L }.toList()
+		}
+		set(v) {
+			val o = JSONObject(); val now = System.currentTimeMillis()
+			v.take(50).forEachIndexed { i, (k, p) -> o.put(k, JSONObject().put("p", p).put("t", now - i)) }
+			sp.edit { putString("resumePositions", o.toString()) }
+		}
+
+	/** Newest resume entries with their saved order kept; [save] writes one or clears it at the end. */
+	fun rememberResume(key: String, positionMs: Long) {
+		if (key.isEmpty() || positionMs < 5_000) return
+		val rest = resume.filterNot { it.first == key }
+		resume = listOf(key to positionMs) + rest
+	}
+
+	fun clearResume(key: String) { resume = resume.filterNot { it.first == key } }
 
 	private val tracks get() = JSONObject(sp.getString("channelTracks", "{}")!!)
 

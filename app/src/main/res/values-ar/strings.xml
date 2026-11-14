@@ -237,4 +237,8 @@
 	<string name="settings_failed">فشل: %1$s</string>
 	<string name="language">اللغة</string>
 	<string name="stream_lost">فُقد البث</string>
+
+	<string name="continue_watching">متابعة المشاهدة</string>
+	<string name="field_backup_servers">الخوادم الاحتياطية، واحد في كل سطر</string>
+	<string name="nothing_to_continue">لا شيء لمتابعته</string>
 </resources>

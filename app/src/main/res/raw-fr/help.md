@@ -59,3 +59,5 @@ Exporter les réglages enregistre listes, comptes, favoris et options dans un fi
 # Mises à jour
 
 L’app cherche une nouvelle version une fois par jour. Plus, Rechercher des mises à jour le fait tout de suite. Android demande de confirmer chaque installation.
+
+Xtream backup servers, one per line.

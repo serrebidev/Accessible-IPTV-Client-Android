@@ -209,4 +209,8 @@
 	<string name="settings_failed">Başarısız: %1$s</string>
 	<string name="language">Dil</string>
 	<string name="stream_lost">Yayın kaybedildi</string>
+
+	<string name="continue_watching">İzlemeye devam et</string>
+	<string name="field_backup_servers">Yedek sunucular, satır başına bir tane</string>
+	<string name="nothing_to_continue">Devam edilecek bir şey yok</string>
 </resources>

@@ -149,6 +149,7 @@ class PlayerActivity : AppCompatActivity() {
 	private var frozenSince: Long? = null
 	/** A recovery gave up on this channel: the budget was spent, or it never played at all. */
 	private var gaveUp = false
+	private var resumeTicks = 0
 
 	/**
 	 * Announces the shared live socket's reconnect once a second. The watchdog handles
@@ -188,6 +189,7 @@ class PlayerActivity : AppCompatActivity() {
 				frozenMs = now - since
 			}
 		} else { lastPosition = position; frozenSince = null }
+		if (!live && channelKey.isNotEmpty() && ++resumeTicks % 15 == 0) saveResume(exo.currentPosition, exo.duration)
 		when (health.tick(exo.playbackState == M3Player.STATE_BUFFERING, frozenMs, exo.totalBufferedDuration)) {
 			StallTracker.Verdict.GROW -> cushion.onStall()
 			StallTracker.Verdict.RESTART -> if (tapSource?.joined?.reconnecting != true) recover(grow = false)
@@ -300,6 +302,9 @@ class PlayerActivity : AppCompatActivity() {
 		player.setMediaItem(item)
 		player.addListener(listener)
 		if (!restoringChannel) player.prepare()
+		if (!live && channelKey.isNotEmpty() && !catchup) {
+			app.prefs.resume.firstOrNull { it.first == channelKey }?.second?.takeIf { it > 5_000 }?.let { player.seekTo(it) }
+		}
 		player.playWhenReady = true
 		if (BuildConfig.DEBUG) heartbeat.run()
 		if (live) status.post(pace)
@@ -715,13 +720,19 @@ class PlayerActivity : AppCompatActivity() {
 		if (!this::player.isInitialized) return
 		if (player.deviceInfo.playbackType == DeviceInfo.PLAYBACK_TYPE_REMOTE || pausedByStop) return
 		// Catch-up and files resume where they were; a live channel starts at the live edge again.
-		if (!live && exo.playbackState != M3Player.STATE_IDLE) resumeAt = exo.currentPosition
+		if (!live && exo.playbackState != M3Player.STATE_IDLE) { resumeAt = exo.currentPosition; saveResume(exo.currentPosition, exo.duration) }
 		pausedByStop = true
 		cancelRetry()
 		status.removeCallbacks(pace)
 		status.removeCallbacks(watchdog)
 		player.stop() // closes the data source, which leaves the tap
 		releaseStream()
+	}
+
+	private fun saveResume(positionMs: Long, durationMs: Long) {
+		if (live || channelKey.isEmpty() || positionMs < 5_000) return
+		if (durationMs > 0 && positionMs >= durationMs - 30_000) app.prefs.clearResume(channelKey)
+		else app.prefs.rememberResume(channelKey, positionMs)
 	}
 
 	private fun cancelRetry() {

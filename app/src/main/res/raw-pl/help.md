@@ -59,3 +59,5 @@ Eksportuj ustawienia zapisuje listy, loginy, ulubione i opcje w pliku. Importuj 
 # Aktualizacje
 
 Aplikacja sprawdza nową wersję raz dziennie. Więcej, Sprawdź aktualizacje sprawdza od razu. Android prosi o potwierdzenie każdej instalacji.
+
+Xtream backup servers, one per line.

@@ -59,3 +59,5 @@ Esporta impostazioni salva liste, accessi, preferiti e opzioni in un file. Impor
 # Aggiornamenti
 
 L’app cerca una nuova versione una volta al giorno. Altro, Cerca aggiornamenti controlla subito. Android chiede di confermare ogni installazione.
+
+Xtream backup servers, one per line.

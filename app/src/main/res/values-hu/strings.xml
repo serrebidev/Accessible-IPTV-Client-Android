@@ -209,4 +209,8 @@
 	<string name="settings_failed">Hiba: %1$s</string>
 	<string name="language">Nyelv</string>
 	<string name="stream_lost">Az adás megszakadt</string>
+
+	<string name="continue_watching">Folytatás</string>
+	<string name="field_backup_servers">Tartalék szerverek, soronként egy</string>
+	<string name="nothing_to_continue">Nincs folytatható</string>
 </resources>

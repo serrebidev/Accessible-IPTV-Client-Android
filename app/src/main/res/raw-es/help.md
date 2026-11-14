@@ -59,3 +59,5 @@ Exportar ajustes guarda listas, accesos, favoritos y opciones en un archivo. Imp
 # Actualizaciones
 
 La app busca una versión nueva una vez al día. Más, Buscar actualizaciones lo hace ahora. Android pide confirmar cada instalación.
+
+Xtream backup servers, one per line.

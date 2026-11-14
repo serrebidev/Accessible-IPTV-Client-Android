@@ -246,6 +246,16 @@ class FeatureTest {
 		assertFalse(app.prefs.speakSubtitles)
 	}
 
+	@Test fun resumeRemembersHalfWatchedAndForgetsNearlyFinished() {
+		app.prefs.rememberResume("src:m1", 30_000)
+		app.prefs.rememberResume("src:m2", 60_000)
+		assertEquals(listOf("src:m2", "src:m1"), app.prefs.resume.map { it.first }) // newest first
+		app.prefs.rememberResume("src:m1", 4_000) // too short: kept unchanged
+		assertEquals(60_000L, app.prefs.resume.first { it.first == "src:m2" }.second)
+		app.prefs.clearResume("src:m2")
+		assertEquals(listOf("src:m1"), app.prefs.resume.map { it.first })
+	}
+
 	@Test fun historicalBufferDefaultsBecomeTwentyFiveWithoutChangingCustomSettings() {
 		assertEquals(25.0, app.prefs.bufferSeconds, 0.0)
 		assertEquals(30.0, app.prefs.maxBufferSeconds, 0.0)

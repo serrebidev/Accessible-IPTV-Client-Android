@@ -12,6 +12,7 @@ data class Source(
 	val password: String = "",
 	val epgUrl: String = "",
 	val mac: String = "",
+	val backupServers: String = "",
 ) {
 	val isXtream get() = type == TYPE_XTREAM
 	val isStalker get() = type == TYPE_STALKER
@@ -28,7 +29,7 @@ data class Source(
 
 	fun toJson(): JSONObject = JSONObject()
 		.put("id", id).put("type", type).put("name", name).put("url", url)
-		.put("username", username).put("password", password).put("epgUrl", epgUrl).put("mac", mac)
+		.put("username", username).put("password", password).put("epgUrl", epgUrl).put("mac", mac).put("backupServers", backupServers)
 
 	companion object {
 		const val TYPE_M3U = "m3u"
@@ -37,7 +38,7 @@ data class Source(
 
 		fun fromJson(o: JSONObject) = Source(
 			o.getString("id"), o.getString("type"), o.optString("name"), o.optString("url"),
-			o.optString("username"), o.optString("password"), o.optString("epgUrl"), o.optString("mac"),
+			o.optString("username"), o.optString("password"), o.optString("epgUrl"), o.optString("mac"), o.optString("backupServers"),
 		)
 
 		fun enc(s: String): String = java.net.URLEncoder.encode(s, "UTF-8")

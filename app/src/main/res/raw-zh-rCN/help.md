@@ -59,3 +59,5 @@ HLS 请求逐个执行。下载需要独占该流。
 # 更新
 
 应用每天检查一次新版本。更多、检查更新会立即检查。Android 每次安装都会要求确认。
+
+Xtream backup servers, one per line.
