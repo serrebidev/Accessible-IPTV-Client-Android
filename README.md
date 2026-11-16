@@ -7,6 +7,8 @@ A vibe-coded, screen-reader-friendly IPTV player for Android phones, tablets, an
 
 **Questions, bugs, or release news?** Join the [SerrebiProjects Telegram group](https://t.me/SerrebiProjects), the fastest place to get help.
 
+More serrebi projects: [projects.serrebiradio.com](https://projects.serrebiradio.com)
+
 This is the Android companion to [Accessible IPTV Client](https://github.com/serrebidev/Accessible-IPTV-Client) for Windows and Linux.
 
 ## Features
@@ -73,3 +75,7 @@ Needs JDK 21 and the Android SDK (platform 37).
 ## Contributing
 
 Pull requests are welcome. If Accessible IPTV Client has been useful to you, open a PR with a fix or feature and I'll review it.
+
+## Credits
+
+See [CREDITS.md](CREDITS.md) for where the ideas behind this project came from, and the third-party projects it builds on.
