@@ -206,5 +206,5 @@
 	<string name="continue_watching">继续观看</string>
 	<string name="field_backup_servers">备用服务器，每行一个</string>
 	<string name="nothing_to_continue">没有可继续的内容</string>
-</resources>
 <string name="about">About</string>
+</resources>
