@@ -242,3 +242,4 @@
 	<string name="field_backup_servers">الخوادم الاحتياطية، واحد في كل سطر</string>
 	<string name="nothing_to_continue">لا شيء لمتابعته</string>
 </resources>
+<string name="about">About</string>

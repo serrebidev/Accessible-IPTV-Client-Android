@@ -214,3 +214,4 @@
 	<string name="field_backup_servers">Yedek sunucular, satır başına bir tane</string>
 	<string name="nothing_to_continue">Devam edilecek bir şey yok</string>
 </resources>
+<string name="about">About</string>

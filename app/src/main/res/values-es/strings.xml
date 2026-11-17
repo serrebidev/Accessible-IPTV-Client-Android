@@ -221,3 +221,4 @@
 	<string name="field_backup_servers">Servidores de respaldo, uno por línea</string>
 	<string name="nothing_to_continue">Nada que continuar</string>
 </resources>
+<string name="about">About</string>

@@ -69,6 +69,16 @@
 		<TextView style="@style/FieldLabel" android:labelFor="@+id/postPad" android:text="@string/post_padding" />
 		<EditText android:id="@+id/postPad" style="@style/Field" android:inputType="number" />
 
+		<TextView android:id="@+id/hAbout" style="@style/Heading" android:text="@string/about" />
+
+		<TextView style="@style/FieldLabel" android:text="Accessible IPTV Client. MIT license. Author: serrebidev." />
+
+		<Button android:id="@+id/linkGitHub" style="@style/BarButton" android:text="GitHub: serrebidev/Accessible-IPTV-Client-Android" />
+		<Button android:id="@+id/linkForgejo" style="@style/BarButton" android:text="Forgejo: serrebi/Accessible-IPTV-Client-Android" />
+		<Button android:id="@+id/linkProjects" style="@style/BarButton" android:text="Projects: projects.serrebiradio.com" />
+		<Button android:id="@+id/linkTelegram" style="@style/BarButton" android:text="Telegram: SerrebiProjects" />
+		<Button android:id="@+id/linkCredits" style="@style/BarButton" android:text="Full credits (CREDITS.md)" />
+
 		<TextView android:id="@+id/hBackup" style="@style/Heading" android:text="@string/backup_heading" />
 
 		<Button android:id="@+id/btnLanguage" style="@style/BarButton" android:text="@string/language" />

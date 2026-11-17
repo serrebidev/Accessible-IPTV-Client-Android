@@ -221,3 +221,4 @@
 	<string name="field_backup_servers">Servidores reserva, um por linha</string>
 	<string name="nothing_to_continue">Nada para continuar</string>
 </resources>
+<string name="about">About</string>

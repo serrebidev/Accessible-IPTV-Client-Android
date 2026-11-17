@@ -54,7 +54,8 @@ class SettingsActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_settings)
 		title = getString(R.string.settings)
-		listOf(R.id.hAudio, R.id.hPlayback, R.id.hGuide, R.id.hRecordings, R.id.hBackup).forEach { findViewById<View>(it).heading() }
+		listOf(R.id.hAudio, R.id.hPlayback, R.id.hGuide, R.id.hRecordings, R.id.hBackup, R.id.hAbout).forEach { findViewById<View>(it).heading() }
+		mapOf(R.id.linkGitHub to "https://github.com/serrebidev/Accessible-IPTV-Client-Android", R.id.linkForgejo to "https://git.serrebiradio.com/serrebi/Accessible-IPTV-Client-Android", R.id.linkProjects to "https://projects.serrebiradio.com", R.id.linkTelegram to "https://t.me/SerrebiProjects", R.id.linkCredits to "https://git.serrebiradio.com/serrebi/Accessible-IPTV-Client-Android/src/branch/main/CREDITS.md").forEach { (id, url) -> findViewById<View>(id).setOnClickListener { runCatching { startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))) } } }
 		preferAd = findViewById(R.id.preferAd)
 		keywords = findViewById(R.id.keywords)
 		days = findViewById(R.id.days)
