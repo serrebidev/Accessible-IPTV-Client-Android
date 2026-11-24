@@ -14,7 +14,7 @@ Kumanda veya klavyedeki rakam tuşları o kanal numarasına atlar.
 
 # Diğer
 
-Önceki kanal, Son izlenenler, Kanal numarasına git, Listeleri yenile, Rehberi yenile, Hesap, Ayarlar, Güncellemeleri denetle, Yardım.
+Önceki kanal, Son izlenenler, Kanal numarasına git, Listeleri yenile, Rehberi yenile, Hesap, Ayarlar, Güncellemeleri denetle, Yardım. GitHub'da sorun bildir bir başlık ve açıklama ister, ardından GitHub'ın yeni sorun sayfasını ikisi ve uygulama sürümü doldurulmuş olarak açar. Oturum açın ve “Create” düğmesine basın.
 
 # Öğeler
 

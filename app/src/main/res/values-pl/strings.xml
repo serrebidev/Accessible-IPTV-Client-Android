@@ -228,4 +228,7 @@
 	<string name="field_backup_servers">Serwery zapasowe, jeden na linię</string>
 	<string name="nothing_to_continue">Brak do kontynuowania</string>
 <string name="about">About</string>
+	<string name="report_issue">Zgłoś problem na GitHubie</string>
+	<string name="report_issue_summary">Tytuł</string>
+	<string name="report_issue_details">Opis</string>
 </resources>

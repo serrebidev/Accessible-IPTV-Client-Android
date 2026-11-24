@@ -307,6 +307,7 @@ class MainActivity : AppCompatActivity() {
 			getString(R.string.settings) to { startActivity(Intent(this, SettingsActivity::class.java)) },
 			getString(R.string.check_updates) to { checkUpdates(quiet = false) },
 			getString(R.string.help) to { startActivity(Intent(this, HelpActivity::class.java)) },
+			getString(R.string.report_issue) to { ReportIssue.show(this) },
 		)
 		PopupMenu(this, anchor).apply {
 			items.forEachIndexed { i, (label, _) -> menu.add(0, i, i, label) }

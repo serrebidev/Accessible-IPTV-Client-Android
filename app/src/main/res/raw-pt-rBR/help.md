@@ -14,7 +14,7 @@ As teclas numéricas do controle ou do teclado vão para aquele número de canal
 
 # Mais
 
-Canal anterior, Vistos recentemente, Ir para número do canal, Atualizar listas, Atualizar guia, Conta, Configurações, Procurar atualizações, Ajuda.
+Canal anterior, Vistos recentemente, Ir para número do canal, Atualizar listas, Atualizar guia, Conta, Configurações, Procurar atualizações, Ajuda. Relatar um problema no GitHub pede um título e uma descrição e abre a página de nova issue do GitHub com ambos preenchidos e a versão do app adicionada. Entre na sua conta e pressione “Create”.
 
 # Itens
 

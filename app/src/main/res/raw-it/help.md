@@ -14,7 +14,7 @@ I tasti numerici del telecomando o della tastiera saltano a quel numero di canal
 
 # Altro
 
-Canale precedente, Visti di recente, Vai al numero di canale, Aggiorna liste, Aggiorna guida, Account, Impostazioni, Cerca aggiornamenti, Aiuto.
+Canale precedente, Visti di recente, Vai al numero di canale, Aggiorna liste, Aggiorna guida, Account, Impostazioni, Cerca aggiornamenti, Aiuto. Segnala un problema su GitHub chiede un titolo e una descrizione, poi apre la pagina di nuova segnalazione di GitHub con entrambi e la versione dell'app già inseriti. Accedi e premi «Create».
 
 # Elementi
 

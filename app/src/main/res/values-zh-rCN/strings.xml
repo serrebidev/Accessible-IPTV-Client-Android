@@ -207,4 +207,7 @@
 	<string name="field_backup_servers">备用服务器，每行一个</string>
 	<string name="nothing_to_continue">没有可继续的内容</string>
 <string name="about">About</string>
+	<string name="report_issue">在 GitHub 上报告问题</string>
+	<string name="report_issue_summary">标题</string>
+	<string name="report_issue_details">描述</string>
 </resources>

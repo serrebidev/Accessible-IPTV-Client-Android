@@ -221,4 +221,7 @@
 	<string name="field_backup_servers">Serveurs de secours, un par ligne</string>
 	<string name="nothing_to_continue">Rien à continuer</string>
 <string name="about">About</string>
+	<string name="report_issue">Signaler un problème sur GitHub</string>
+	<string name="report_issue_summary">Titre</string>
+	<string name="report_issue_details">Description</string>
 </resources>

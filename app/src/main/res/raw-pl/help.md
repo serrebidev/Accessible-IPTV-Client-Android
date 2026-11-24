@@ -14,7 +14,7 @@ Klawisze cyfr na pilocie lub klawiaturze przełączają na kanał o tym numerze.
 
 # Więcej
 
-Poprzedni kanał, Ostatnio oglądane, Przejdź do numeru kanału, Odśwież listy, Odśwież program, Konto, Ustawienia, Sprawdź aktualizacje, Pomoc.
+Poprzedni kanał, Ostatnio oglądane, Przejdź do numeru kanału, Odśwież listy, Odśwież program, Konto, Ustawienia, Sprawdź aktualizacje, Pomoc. Zgłoś problem na GitHubie pyta o tytuł i opis, a potem otwiera stronę nowego zgłoszenia na GitHubie z oboma polami i wersją aplikacji. Zaloguj się i naciśnij „Create”.
 
 # Pozycje
 

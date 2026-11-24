@@ -14,7 +14,7 @@ Les touches numériques d’une télécommande ou d’un clavier sautent à ce n
 
 # Plus
 
-Chaîne précédente, Vus récemment, Aller au numéro de chaîne, Actualiser les listes, Actualiser le guide, Compte, Réglages, Rechercher des mises à jour, Aide.
+Chaîne précédente, Vus récemment, Aller au numéro de chaîne, Actualiser les listes, Actualiser le guide, Compte, Réglages, Rechercher des mises à jour, Aide. Signaler un problème sur GitHub demande un titre et une description, puis ouvre la page de nouveau ticket GitHub avec les deux remplis et la version de l'application ajoutée. Connectez-vous et appuyez sur « Create ».
 
 # Éléments
 

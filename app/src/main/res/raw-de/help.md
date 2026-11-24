@@ -14,7 +14,7 @@ Zifferntasten auf Fernbedienung oder Tastatur springen zu dieser Sendernummer.
 
 # Mehr
 
-Vorheriger Sender, Zuletzt gesehen, Zu Sendernummer, Listen aktualisieren, Programm aktualisieren, Konto, Einstellungen, Nach Updates suchen, Hilfe.
+Vorheriger Sender, Zuletzt gesehen, Zu Sendernummer, Listen aktualisieren, Programm aktualisieren, Konto, Einstellungen, Nach Updates suchen, Hilfe. Problem auf GitHub melden fragt nach Titel und Beschreibung und öffnet dann die GitHub-Seite für ein neues Issue mit beidem und der App-Version. Melden Sie sich an und drücken Sie „Create“.
 
 # Einträge
 

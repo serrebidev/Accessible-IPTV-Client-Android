@@ -214,4 +214,7 @@
 	<string name="field_backup_servers">बैकअप सर्वर, प्रत्येक पंक्ति में एक</string>
 	<string name="nothing_to_continue">जारी रखने को कुछ नहीं</string>
 <string name="about">About</string>
+	<string name="report_issue">GitHub पर समस्या की रिपोर्ट करें</string>
+	<string name="report_issue_summary">शीर्षक</string>
+	<string name="report_issue_details">विवरण</string>
 </resources>

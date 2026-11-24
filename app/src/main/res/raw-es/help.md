@@ -14,7 +14,7 @@ Las teclas numéricas de un mando o teclado saltan a ese número de canal.
 
 # Más
 
-Canal anterior, Vistos recientemente, Ir al número de canal, Actualizar listas, Actualizar guía, Cuenta, Ajustes, Buscar actualizaciones, Ayuda.
+Canal anterior, Vistos recientemente, Ir al número de canal, Actualizar listas, Actualizar guía, Cuenta, Ajustes, Buscar actualizaciones, Ayuda. Informar de un problema en GitHub pide un título y una descripción y abre la página de nueva incidencia de GitHub con ambos rellenados y la versión de la app añadida. Inicia sesión y pulsa «Create».
 
 # Elementos
 

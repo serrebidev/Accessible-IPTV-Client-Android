@@ -16,7 +16,7 @@ Number keys on a remote or keyboard jump to that channel number.
 
 # More
 
-Previous channel, Continue watching, Recently watched, Go to channel number, Refresh playlists, Refresh guide, Account, Settings, Check for updates, Help.
+Previous channel, Continue watching, Recently watched, Go to channel number, Refresh playlists, Refresh guide, Account, Settings, Check for updates, Help. Report an issue on GitHub asks for a title and a description, then opens the GitHub new issue page with both filled in and the app version added. Sign in and press Create.
 
 # Items
 

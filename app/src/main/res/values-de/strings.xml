@@ -214,4 +214,7 @@
 	<string name="field_backup_servers">Backup-Server, einer pro Zeile</string>
 	<string name="nothing_to_continue">Nichts fortzusetzen</string>
 <string name="about">About</string>
+	<string name="report_issue">Problem auf GitHub melden</string>
+	<string name="report_issue_summary">Titel</string>
+	<string name="report_issue_details">Beschreibung</string>
 </resources>

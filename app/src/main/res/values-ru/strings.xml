@@ -228,4 +228,7 @@
 	<string name="field_backup_servers">Резервные серверы, один на строку</string>
 	<string name="nothing_to_continue">Нечего продолжать</string>
 <string name="about">About</string>
+	<string name="report_issue">Сообщить о проблеме на GitHub</string>
+	<string name="report_issue_summary">Заголовок</string>
+	<string name="report_issue_details">Описание</string>
 </resources>

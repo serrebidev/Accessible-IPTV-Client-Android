@@ -207,4 +207,7 @@
 	<string name="field_backup_servers">バックアップサーバー、1行に1つ</string>
 	<string name="nothing_to_continue">続きはありません</string>
 <string name="about">About</string>
+	<string name="report_issue">GitHub で問題を報告</string>
+	<string name="report_issue_summary">タイトル</string>
+	<string name="report_issue_details">説明</string>
 </resources>

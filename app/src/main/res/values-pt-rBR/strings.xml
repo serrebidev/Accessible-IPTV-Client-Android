@@ -221,4 +221,7 @@
 	<string name="field_backup_servers">Servidores reserva, um por linha</string>
 	<string name="nothing_to_continue">Nada para continuar</string>
 <string name="about">About</string>
+	<string name="report_issue">Relatar um problema no GitHub</string>
+	<string name="report_issue_summary">Título</string>
+	<string name="report_issue_details">Descrição</string>
 </resources>

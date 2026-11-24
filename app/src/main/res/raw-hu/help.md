@@ -14,7 +14,7 @@ A távirányító vagy billentyűzet számgombjai az adott csatornaszámra ugran
 
 # Továbbiak
 
-Előző csatorna, Legutóbb nézett, Ugrás csatornaszámra, Listák frissítése, Műsorújság frissítése, Fiók, Beállítások, Frissítések keresése, Súgó.
+Előző csatorna, Legutóbb nézett, Ugrás csatornaszámra, Listák frissítése, Műsorújság frissítése, Fiók, Beállítások, Frissítések keresése, Súgó. A Probléma bejelentése a GitHubon címet és leírást kér, majd megnyitja a GitHub új hibajegy oldalát mindkettővel és az alkalmazás verziójával kitöltve. Jelentkezzen be, és nyomja meg a „Create” gombot.
 
 # Elemek
 

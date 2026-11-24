@@ -214,4 +214,7 @@
 	<string name="field_backup_servers">Yedek sunucular, satır başına bir tane</string>
 	<string name="nothing_to_continue">Devam edilecek bir şey yok</string>
 <string name="about">About</string>
+	<string name="report_issue">GitHub\'da sorun bildir</string>
+	<string name="report_issue_summary">Başlık</string>
+	<string name="report_issue_details">Açıklama</string>
 </resources>
